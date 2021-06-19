@@ -13,18 +13,23 @@ public class homecontroller {
 		return "index.jsp";
 	}
 
-	@RequestMapping(value = "/surveydata", method = RequestMethod.POST)
-	public String handleData(Model model, @RequestParam(value = "name") String name,
-			@RequestParam(value = "dojolocation") String dojolocation, @RequestParam(value = "favlang") String favlang,
-			@RequestParam(value = "comments") String comments){
+
+	@RequestMapping(value="surveydata", method = RequestMethod.POST )
+
+	public String handleData(Model model, @RequestParam("name") String name,
+			@RequestParam("dojolocation") String dojolocation, @RequestParam("favlang") String favlang,
+			@RequestParam("comments") String comments){
 
 		model.addAttribute("name", name);
 		model.addAttribute("dojolocation", dojolocation);
 		model.addAttribute("favlang", favlang);
 		model.addAttribute("comments", comments);
-		
-
+//		return "redirect:/result";
 		return "survey.jsp";
 	}
-
+	
+		@RequestMapping("/result")
+		public String result() {
+			return "survey.jsp";
+}
 }
